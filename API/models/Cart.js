@@ -6,8 +6,13 @@ class Cart extends Model {}
 
 Cart.init(
     {
-        session_id: {
+        // session_id: {
+        //     type: DataTypes.INTEGER,
+        // },                           esto se crearia automaticamente al hacer la relacion con user
+        quantity: {
             type: DataTypes.INTEGER,
-        },
+        }
     }
 )
+
+module.exports = Cart;

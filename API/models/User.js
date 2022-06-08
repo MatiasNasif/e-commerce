@@ -29,15 +29,15 @@ User.init(
                 isEmail: true
             }
         },
-        dni: {
+        dni: { // dato a manejar por el front
             type: DataTypes.INTEGER,
             allowNull: true,
         },
-        phone: {
+        phone: { // dato a manejar por el front
             type: DataTypes.INTEGER,
             allowNull: true,
         },
-        adress: {
+        adress: { // dato a manejar por el front
             type: DataTypes.STRING,
             allowNull: true,
         },
