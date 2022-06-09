@@ -30,7 +30,7 @@ Product.init(
             type: DataTypes.FLOAT,
         },
         img: {
-            type: DataTypes.ARRAY,
+            type: DataTypes.ARRAY(DataTypes.TEXT),
         }
     },
     { sequelize, modelName: "product" }
