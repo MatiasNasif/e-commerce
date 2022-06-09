@@ -37,7 +37,7 @@ User.init(
             type: DataTypes.INTEGER,
             allowNull: true,
         },
-        adress: { // dato a manejar por el front
+        address: { // dato a manejar por el front
             type: DataTypes.STRING,
             allowNull: true,
         },
