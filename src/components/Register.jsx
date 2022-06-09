@@ -21,7 +21,7 @@ import useInput from '../hooks/useInput';
 import axios from 'axios';
 
 export default function Register() {
-  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM
+  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM ASI FUNCIONA ESTE CODIGO
   // const navigate = useNavigate();
   // const name = useInput();
   // const email = useInput();

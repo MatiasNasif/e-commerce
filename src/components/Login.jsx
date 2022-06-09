@@ -18,7 +18,7 @@ import useInput from '../hooks/useInput';
 
 export default function Login() {
 
-  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM
+  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM ASI FUNCIONA ESTE CODIGO
   // const navigate = useNavigate();
   // const email = useInput();
   // const password = useInput();
