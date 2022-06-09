@@ -2,6 +2,7 @@ import { Flex, Grid } from '@chakra-ui/react';
 import ProductCard from './ProductCard';
 import products from "../utils/fake_api.json"
 
+
 const Products = () => {
 
   return (

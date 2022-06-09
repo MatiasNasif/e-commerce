@@ -18,11 +18,9 @@ import {
   } from '@chakra-ui/react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
+  //import products from '../utils/fake_api.json'
   
-  import products from '../utils/fake_api.json'
-  
-  export default function Products() {
-    console.log(products)
+  export default function ItemProduct() {
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid
