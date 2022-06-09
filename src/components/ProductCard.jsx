@@ -1,7 +1,16 @@
-import { Box, Image, Text, Flex, Button } from '@chakra-ui/react';
+import { Box, Image, Button } from '@chakra-ui/react';
+import React, { useState } from 'react';
 
 
 const ProductCard = ({ product }) => {
+
+    const [products, setProduct] = useState()
+
+    // ESTE FUNCIONAMIENTO TAMBIÉN DEBERIA IR AL DETALLE DEL PRODUCTO INDIVIDUAL
+    const handleAddToCart = (e) => {
+        setProduct(e.target.event);
+    }
+
     return (
 
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
@@ -20,7 +29,12 @@ const ProductCard = ({ product }) => {
                 <Box>
                     $ {product.precio}
                 </Box>
-                <Button>Add to Cart</Button>
+                {/* RETORNA UNDEFINED PORQUE NO TIENE DE DONDE TOMAR INFORMACION */}
+                <Button onClick={handleAddToCart} value={product}
+                    colorScheme='yellow' variant='outline' w={[55, 100]} fontSize='sm'>
+                    Add to Cart
+                </Button>
+
             </Box>
         </Box>
     )

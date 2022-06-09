@@ -22,7 +22,7 @@ User.init(
         salt: {
             type: DataTypes.STRING,
         },
-        mail: {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             validate: {

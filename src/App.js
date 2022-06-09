@@ -3,14 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
 import AboutUs from "./components/AboutUs";
-import Cart from "./components/Cart";
+import Cart from "./commons/Cart";
 import Categories from "./components/Categories";
 import CheckOut from "./components/CheckOut";
 import Finish from "./components/Finish";
-import HistoryClient from "./components/HistoryClient";
-import ProductItem from "./components/ProductItem";
+import HistoryClient from "./commons/HistoryClient";
+import ItemProduct from "./components/ItemProduct";
 import NotFound from "./components/NotFound";
-import Products from "./components/Products";
+import Products from "./commons/Products";
 import Register from "./components/Register";
 import Login from "./components/Login"
 import Search from "./components/Search";
@@ -43,7 +43,7 @@ function App() {
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/finish" element={<Finish />} />
           <Route path="/historyclient" element={<HistoryClient />} />
-          <Route path="/itemproduct" element={<ProductItem />} />
+          <Route path="/itemproduct" element={<ItemProduct />} />
           <Route path="/notfound" element={<NotFound />} />
 
           {/* Rutas Solo Admin */}
