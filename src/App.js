@@ -8,7 +8,7 @@ import Categories from "./components/Categories";
 import CheckOut from "./components/CheckOut";
 import Finish from "./components/Finish";
 import HistoryClient from "./components/HistoryClient";
-import ProductItem from "./components/ProductItem";
+import ItemProduct from "./components/ItemProduct";
 import NotFound from "./components/NotFound";
 import Products from "./components/Products";
 import Register from "./components/Register";
@@ -43,7 +43,7 @@ function App() {
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/finish" element={<Finish />} />
           <Route path="/historyclient" element={<HistoryClient />} />
-          <Route path="/itemproduct" element={<ProductItem />} />
+          <Route path="/itemproduct" element={<ItemProduct />} />
           <Route path="/notfound" element={<NotFound />} />
 
           {/* Rutas Solo Admin */}
@@ -53,7 +53,7 @@ function App() {
           <Route path="/historyAdmin" element={<HistoryAdmin />} />
           <Route path="/modifyproduct" element={<ModifyProduct />} />
           <Route path="/usersadmin" element={<UsersAdmin />} />
-          <Route path="/categories" element={<CategoryProduct />}/>
+          <Route path="/categoriesAdmin" element={<CategoryProduct />}/>
         </Routes>
       </main>
     </div>

@@ -1,0 +1,19 @@
+[
+    {
+     "id": 1,
+     "name": "Vientos"
+    },
+    {
+     "id": 2,
+     "name": "Cuerdas"
+     
+    },
+    {
+     "id": 3,
+     "name": "Percusion"
+    },
+    {
+     "id": 4,
+     "name": "Teclas"
+    }
+]
