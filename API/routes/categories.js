@@ -3,7 +3,7 @@ const router = express.Router();
 const {Category, Product} = require('../models');
 
 router.get('/:categories',function(req,res){
-    Category.findOne({where: {nombre:req.params.categories},include: {model:Product}}).then((products)=>res.status(200).send(products)) 
+    Category.findOne({where: {name:req.params.categories},include: {model:Product}}).then((products)=>res.status(200).send(products)) 
     .catch(error=>console.log(error))
 })
 

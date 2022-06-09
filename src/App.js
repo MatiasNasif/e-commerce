@@ -20,7 +20,7 @@ import DeleteProduct from "./components/SoloAdmin/DeleteProduct";
 import HistoryAdmin from "./components/SoloAdmin/HistoryAdmin";
 import ModifyProduct from "./components/SoloAdmin/ModifyProduct";
 import UsersAdmin from "./components/SoloAdmin/UsersAdmin";
-
+import CategoryProduct from "./components/SoloAdmin/CategoryProduct"
 
 function App() {
   return (
@@ -53,6 +53,7 @@ function App() {
           <Route path="/historyAdmin" element={<HistoryAdmin />} />
           <Route path="/modifyproduct" element={<ModifyProduct />} />
           <Route path="/usersadmin" element={<UsersAdmin />} />
+          <Route path="/categories" element={<CategoryProduct />}/>
         </Routes>
       </main>
     </div>
