@@ -20,4 +20,5 @@ User_order.init(
 
 module.exports = User_order;
 
-/// este modelo estaria simplificado en User, se controlarian los campos no requeridos desde el front controlando los inputs
+/// este modelo estaria simplificado en User por eso esta comentada, 
+/// se controlarian los campos no requeridos desde el front controlando los inputs

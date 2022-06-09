@@ -58,7 +58,7 @@ passport.deserializeUser(function (id, done) {
 });
 
 // Routes
-// app.use("/api", routes);
+app.use("/api", routes);
 
 // agregar un error como middleware??
 
