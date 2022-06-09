@@ -17,8 +17,9 @@
 import logo from "../utils/logo.jpg";
 import products from "../utils/fake_api.json"
 import { FaShoppingCart } from "react-icons/fa";
-import { Box, Flex, Image, Text, IconButton, Button, extendTheme, Stack, Collapse, Icon, Link, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Input, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, IconButton, Button, extendTheme, Stack, Collapse, Icon, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Link, Input, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Link as ReactRouter} from "react-router-dom"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -58,7 +59,7 @@ export default function WithSubnavigation() {
           <Box boxSize="80PX">
 
             {/* NO TOMA EL LINK PARA EL LOGO AL LANDING PAGE*/}
-            <Link to="/">
+            <Link to="/" as={ReactRouter}>
               <Image src={logo} alt="Good Vibes" />
             </Link>
           </Box>
@@ -79,6 +80,7 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
+          <Link to="login">
           <Button
             as={"a"}
             fontSize={"sm"}
@@ -89,6 +91,8 @@ export default function WithSubnavigation() {
           >
             Sign In
           </Button>
+          </Link>
+          <Link to="/register">
           <Button
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}
@@ -102,6 +106,7 @@ export default function WithSubnavigation() {
           >
             Sign Up
           </Button>
+          </Link>
           <Button
             display={{ base: "none", md: "inline-flex" }}
             fontSize={"sm"}

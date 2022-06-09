@@ -1,11 +1,12 @@
 import { Box, Image, Text, Flex, Button } from '@chakra-ui/react';
+import { Link } from "react-router-dom"
 
 
 const ProductCard = ({ product }) => {
-    return (
 
+    return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Image src={product.imagen_uno} />
+            <Link to={product.id}> <Image src={product.imagen_uno} /></Link>
             <Box p='6'>
                 <Box
                     mt='1'

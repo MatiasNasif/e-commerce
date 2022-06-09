@@ -8,7 +8,7 @@ import Categories from "./components/Categories";
 import CheckOut from "./components/CheckOut";
 import Finish from "./components/Finish";
 import HistoryClient from "./components/HistoryClient";
-import ProductItem from "./components/ProductItem";
+import ItemProduct from "./components/ItemProduct";
 import NotFound from "./components/NotFound";
 import Products from "./components/Products";
 import Register from "./components/Register";
@@ -34,16 +34,16 @@ function App() {
           {/* Rutas de Navbar */}
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ItemProduct />} />
           <Route path="/search" element={<Search />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/categories" element={<Categories />} />
-
+        
           
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/finish" element={<Finish />} />
           <Route path="/historyclient" element={<HistoryClient />} />
-          <Route path="/itemproduct" element={<ProductItem />} />
           <Route path="/notfound" element={<NotFound />} />
 
           {/* Rutas Solo Admin */}
