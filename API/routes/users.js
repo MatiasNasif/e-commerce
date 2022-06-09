@@ -13,10 +13,7 @@ users.post('/register', (req, res) => {
 // CHEQUEAR SI ESTÁ OK EL MIDDLEWARE DE PASSPORT UNA VEZ QUE ESTÉ CONFIGURADO
 
 users.post('/login', passport.authenticate('local'), (req, res) => {
-    User.findOne({ where: {
-        email: req.body.email
-    }})
-    .then(user => res.send(user));
+    res.send(req.user)
 });
 
 users.post('/logout', (req, res, next) => {
@@ -44,49 +41,26 @@ users.get('/me', (req, res) => {
     res.send(req.user);
 });
 
-/* users.put('/make_admin/:id', (req, res, next) => {
-    User.update(req.body, { 
-        where: { id: req.params.id },
-        returning: true
-        })
-    .then(([updatedRows, user]) => {
-        res.status(201).send(user[0])
-    })
-    .catch(next)
-}); */
-
-
-
-
-
-
-/* users.get('/', (req, res) => {
+users.get('/admin/list_users', (req, res) => {
     User.findAll()
-    .then(users => res.send(users))
-    .catch(error => console.log(error));
+        .then(users => res.send(users))
+        .catch(err => console.log(err));
 });
 
-users.get('/:id', (req, res) => {
-    User.findByPk(req.params.id)
-    .then(user => res.send(user))
-    .catch(error => console.log(error));
+users.put('/admin/make_admin/:id', (req, res, next) => {
+    User.update({ admin: true }, {
+        where: { id: req.params.id },
+        returning: true,
+        plain: true
+        })
+        .then(user => res.status(201).send(user[1]))
+        .catch(err => console.log(err));
 });
 
-
-users.put('/:id/favs', (req, res) => {
-    User.findByPk(req.params.id)
-      .then(user => {
-            return Users.update({ favs: req.body.favs }, {
-              where: { id: user.id },
-              returning: true,
-              plain: true
-          })
-      })
-      .then(favs => {
-          console.log('FAVS SERIA ESTO: ',favs)
-          res.send(favs[1])
-          })
-      .catch(error => console.log(error))
-}); */
+users.delete('/admin/:id', (req, res) => {
+    User.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(202))
+    .catch(err => console.log(err))
+});
 
 module.exports = users
