@@ -1,31 +1,42 @@
 //Grilla de Categorias
-
-import React, { useState } from "react";
-import CardCategory from "./CardCategory"; 
+import { Flex, Grid } from "@chakra-ui/react";
+import fakeCategory from "../../utils/fake_category.json";
+import React, { useState, useEffect } from "react";
+import CardCategory from "./CategoryCard";
+import AddCategory from "./AddCategory";
 //import axios from "axios";
 
-const dataCat = ['viento','percusion','cuerda']
-
 const CategoryProduct = () => {
+  const [category, setCategory] = useState([]); // front
+  console.log("hola");
 
-
-  const [category, setCategory] = useState([]);  // front
-
-/*   useEffect(() =>
-    axios
+  useEffect(
+    () => setCategory(fakeCategory),
+    /* axios
       .get("/api/categories")
       .then((res) => res.data)
-      .then((category) => setCategory(category)) // back
-  ,[]);
- */
+      .then((category) => setCategory(category)) */ // back
+    []
+  );
 
-console.log(category)
+  console.log(category);
   return (
-    <div>
-      <h1> Categories</h1>
-      {category.map((categoria)=>
-      <CardCategory propCat={categoria}/>)}
-    </div>
+    <>
+      <Flex width="100%" align="center" justify="center">
+        <Grid
+          p="5"
+          w="100%"
+          templateColumns={["repeat(2,1fr)", "repeat(4,1fr)"]}
+          gap={6}
+        >
+          {category.map((categoria) => (
+            <CardCategory propCat={categoria} />
+          ))}
+        </Grid>
+      </Flex>
+
+      <AddCategory />
+    </>
   );
 };
 

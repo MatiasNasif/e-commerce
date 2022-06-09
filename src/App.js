@@ -39,11 +39,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/categories" element={<Categories />} />
-        
-          
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/finish" element={<Finish />} />
           <Route path="/historyclient" element={<HistoryClient />} />
+
           <Route path="/notfound" element={<NotFound />} />
 
           {/* Rutas Solo Admin */}
@@ -53,7 +52,7 @@ function App() {
           <Route path="/historyAdmin" element={<HistoryAdmin />} />
           <Route path="/modifyproduct" element={<ModifyProduct />} />
           <Route path="/usersadmin" element={<UsersAdmin />} />
-          <Route path="/categories" element={<CategoryProduct />}/>
+          <Route path="/categoriesAdmin" element={<CategoryProduct />}/>
         </Routes>
       </main>
     </div>
