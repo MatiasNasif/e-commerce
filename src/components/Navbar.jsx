@@ -35,8 +35,8 @@ export default function WithSubnavigation() {
         borderStyle="solid"
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align="center"
-        
-        
+
+
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
@@ -139,51 +139,50 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={2}>
 
-      <Link to="/products" >
-        {NAV_ITEMS.map((navItem) => (
-          <Box key={navItem.label}>
-            <Popover trigger={"hover"} placement={"bottom-start"}>
-              <PopoverTrigger>
-                <Link
-                  p={2}
-                  href={navItem.href ?? "#"}
-                  fontSize={"3xl"}
-                  fontWeight={500}
-                  color={linkColor}
-                  _hover={{
-                    textDecoration: "none",
-                    color: linkHoverColor,
-                  }}
-                >
-                  {navItem.label}
-                </Link>
-              </PopoverTrigger>
 
-              {navItem.children && (
-                <PopoverContent
-                  border={0}
-                  boxShadow={"xl"}
-                  bg={popoverContentBgColor}
-                  p={4}
-                  rounded={"xl"}
-                  minW={"sm"}
-                >
-                  <Stack>
-                    {navItem.children.map((child) => (
-                      <DesktopSubNav key={child.label} {...child} />
-                    ))}
-                  </Stack>
-                </PopoverContent>
-              )}
-            </Popover>
-          </Box>
-        ))}
-      </Link>
+      {NAV_ITEMS.map((navItem) => (
+        <Box key={navItem.label}>
+          <Popover trigger={"hover"} placement={"bottom-start"}>
+            <PopoverTrigger>
+              <Link
+                p={2}
+                href={navItem.href ?? "#"}
+                fontSize={"3xl"}
+                fontWeight={500}
+                color={linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
+              >
+                {navItem.label}
+              </Link>
+            </PopoverTrigger>
+
+            {navItem.children && (
+              <PopoverContent
+                border={0}
+                boxShadow={"xl"}
+                bg={popoverContentBgColor}
+                p={4}
+                rounded={"xl"}
+                minW={"sm"}
+              >
+                <Stack>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Stack>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
+      ))}
     </Stack>
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
       href={href}
@@ -234,7 +233,7 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -287,12 +286,12 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
+// interface NavItem {
+//   label: string;
+//   subLabel?: string;
+//   children?: Array<NavItem>;
+//   href?: string;
+// }
 
 const NAV_ITEMS = [
   {
