@@ -16,10 +16,29 @@ import {
 
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useInput from '../hooks/useInput';
+import axios from 'axios';
 
 export default function Register() {
+  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM
+  // const navigate = useNavigate();
+  // const name = useInput();
+  // const email = useInput();
+  // const password = useInput();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //   .post("/api/register", {
+  //     name: name.value,
+  //     email: email.value,
+  //     password: password.value,
+  //   })
+  //   .then(() => navigate("/login"))
+  // }
 
   return (
     <Flex
@@ -36,17 +55,19 @@ export default function Register() {
             to enjoy all of our cool features ✌️
           </Text>
         </Stack>
+        {/* <form onSubmit={handleSubmit}> */}
         <Box
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
-          p={8}>
+          p={8}
+          >
           <Stack spacing={4}>
             <HStack>
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <Input {...name} type="text" />
                 </FormControl>
               </Box>
               <Box>
@@ -58,12 +79,12 @@ export default function Register() {
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input {...email} type="email" />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? 'text' : 'password'} />
+                <Input {...password} type={showPassword ? 'text' : 'password'} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -94,6 +115,7 @@ export default function Register() {
             </Stack>
           </Stack>
         </Box>
+        {/* </form> */}
       </Stack>
     </Flex>
   );

@@ -29,11 +29,11 @@ app.use(passport.session());
 // usando passport con estrategia "local"
 passport.use(
   new localStrategy(
-    { usernameField: "name", passwordField: "password" },
-    function (name, password, done) {
-      models.User.findOne({ where: { name } })
+    { usernameField: "email", passwordField: "password" },
+    function (email, password, done) {
+      models.User.findOne({ where: { email } })
         .then((user) => {
-          if (!user) return done(null, false); // username not found
+          if (!user) return done(null, false); // email not found
           user.hash(password, user.salt).then((hash) => {
             if (hash !== user.password) {
               return done(null, false); // wrong password
