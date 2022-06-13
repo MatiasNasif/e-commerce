@@ -20,7 +20,6 @@ import { Link as ReactRouter } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { Box, Flex, Image, Text, IconButton, Button, extendTheme, Stack, Collapse, Icon, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Link, Input, useDisclosure } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Link as ReactRouter} from "react-router-dom"
 
 
 export default function WithSubnavigation() {

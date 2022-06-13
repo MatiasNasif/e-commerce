@@ -67,7 +67,9 @@ export default function Register() {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input {...name} type="text" />
+                  <Input 
+                  /*{...name}*/ 
+                  type="text" />
                 </FormControl>
               </Box>
               <Box>
@@ -79,12 +81,16 @@ export default function Register() {
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input {...email} type="email" />
+              <Input 
+              /*{...email}*/ 
+              type="email" />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input {...password} type={showPassword ? 'text' : 'password'} />
+                <Input 
+                /*{...password}*/
+                 type={showPassword ? 'text' : 'password'} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
