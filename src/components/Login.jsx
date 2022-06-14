@@ -61,13 +61,13 @@ export default function Login() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input 
+              <Input
               {...email} 
               type="email"/>
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input 
+              <Input
               {...password} 
               type="password" />
             </FormControl>

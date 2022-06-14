@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const { User } = require('../models');
 
-const users = express.Router();
+const users = express.Router(); // chequear si queda nombre users o router
 
 users.post('/register', (req, res) => {
     User.create(req.body)
