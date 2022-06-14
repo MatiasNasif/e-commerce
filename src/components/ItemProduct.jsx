@@ -20,7 +20,7 @@ import {
   import { MdLocalShipping } from 'react-icons/md';
   //import products from '../utils/fake_api.json'
   
-  export default function ItemProduct() {
+  export default function ItemProduct(){
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid

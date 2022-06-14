@@ -12,7 +12,7 @@ Product.init(
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false, // NECESARIO??
+            allowNull: false, 
         },
         SKU: {
             type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ Product.init(
         },
         stock: {
             type: DataTypes.INTEGER,
-            defaultValue: 0, // ????
+            defaultValue: 0, 
         },
         price: {
             type: DataTypes.FLOAT,
