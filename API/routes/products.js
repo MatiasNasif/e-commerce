@@ -4,8 +4,9 @@ const router = express.Router();
 const { Product } = require("../models");
 
 router.get("/", (req, res) => { // funciona
+  console.log("ESTOY ACA")
   Product.findAll()
-    .then((data) => res.send(data).statusCode(200))
+    .then((data) => res.status(200).send(data))
     .catch(() => res.sendStatus(500));
 });
 
