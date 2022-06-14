@@ -1,20 +1,14 @@
 import { Box, Image, Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, Link as ReactRouter } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-
-    const [products, setProduct] = useState()
-
-    // ESTE FUNCIONAMIENTO TAMBIÉN DEBERIA IR AL DETALLE DEL PRODUCTO INDIVIDUAL
-    const handleAddToCart = (e) => {
-        setProduct(e.target.event);
-    }
-
+    console.log(product)
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Link to={product.id}> <Image src={product.imagen_uno} /></Link>
+              <Link to={"/products/" + product.id} as={ReactRouter}>
+                 <Image src={product.img} />
+              </Link>
             <Box p='6'>
                 <Box
                     mt='1'
@@ -23,14 +17,13 @@ const ProductCard = ({ product }) => {
                     lineHeight='tight'
                     noOfLines={1}
                 >
-                    {product.nombre}
+                    {product.name}
                 </Box>
 
                 <Box>
-                    $ {product.precio}
+                    $ {product.price}
                 </Box>
-                {/* RETORNA UNDEFINED PORQUE NO TIENE DE DONDE TOMAR INFORMACION */}
-                <Button onClick={handleAddToCart} value={product}
+                <Button value={product}
                     colorScheme='yellow' variant='outline' w={[55, 100]} fontSize='sm'>
                     Add to Cart
                 </Button>

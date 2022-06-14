@@ -1,9 +1,19 @@
 import { Flex, Grid } from '@chakra-ui/react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
-import products from "../utils/fake_api.json"
+//import products from "../utils/fake_api.json"
 
 
 const Products = () => {
+
+  const [products, setProduct] = useState([])
+
+  useEffect(()=>{
+    axios.get("http://localhost:3001/api/products")
+    .then((res) => setProduct(res.data))
+    .catch(error => console.log(error))
+  }, [])
 
   return (
     <Flex width="100%" align="center" justify="center" >

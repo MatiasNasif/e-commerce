@@ -8,9 +8,10 @@ Cart.init(
         // session_id: {
         //     type: DataTypes.INTEGER,
         // },                           esto se crearia automaticamente al hacer la relacion con user
-        quantity: {
-            type: DataTypes.INTEGER,
-        }
+        // quantity: {
+        //     type: DataTypes.INTEGER,
+        //     defaultValue: 1,
+        // }
     },
     { sequelize, modelName: "cart" }
 )
