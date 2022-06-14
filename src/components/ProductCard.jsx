@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
 
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-            <Link to={product.id}> <Image src={product.imagen_uno} /></Link>
+            <Image src={product.imagen_uno} />
             <Box p='6'>
                 <Box
                     mt='1'

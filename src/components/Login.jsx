@@ -56,15 +56,20 @@ export default function Login() {
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
           p={8}
-          onSubmit={handleSubmit}>
+/*           onSubmit={handleSubmit}
+ */          >
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input {...email} type="email"/>
+              <Input 
+/*               {...email} type="email"
+ */              />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input {...password} type="password" />
+              <Input 
+/*               {...password} type="password" 
+ */              />
             </FormControl>
             <Stack spacing={10}>
               <Stack
