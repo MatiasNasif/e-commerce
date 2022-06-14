@@ -19,23 +19,23 @@ import useInput from '../hooks/useInput';
 export default function Login() {
 
   // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM ASI FUNCIONA ESTE CODIGO
-  // const navigate = useNavigate();
-  // const email = useInput();
-  // const password = useInput();
+  const navigate = useNavigate();
+  const email = useInput();
+  const password = useInput();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //   .post("/api/login", {
-  //     email: email.value,
-  //     password: password.value,
-  //   })
-  //   .then((user) => {
-  //     console.log("este es el user del login: ", user);
-  //     return navigate(`/products`)
-  //   })
-  //   .catch(() => navigate("/404"));
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+    .post("http://localhost:3001/api/users/login", {
+      email: email.value,
+      password: password.value,
+    })
+    .then((user) => {
+      console.log("este es el user del login: ", user);
+      return navigate(`/products`)
+    })
+    .catch(() => navigate("/404"));
+  }
 
   return (
     <Flex
@@ -50,21 +50,26 @@ export default function Login() {
             to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
           </Text>
         </Stack>
-        {/* <form onSubmit={handleSubmit}> */}
+        <form onSubmit={handleSubmit}>
         <Box
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
           p={8}
-          onSubmit={handleSubmit}>
+          // onSubmit={handleSubmit}
+          >
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input {...email} type="email"/>
+              <Input 
+              {...email} 
+              type="email"/>
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input {...password} type="password" />
+              <Input 
+              {...password} 
+              type="password" />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -75,6 +80,7 @@ export default function Login() {
                 <Link color={'blue.400'}>Forgot password?</Link>
               </Stack>
               <Button
+              type='submit'
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
@@ -85,7 +91,7 @@ export default function Login() {
             </Stack>
           </Stack>
         </Box>
-        {/* </form> */}
+        </form>
         
       </Stack>
     </Flex>

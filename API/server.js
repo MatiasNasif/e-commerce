@@ -8,11 +8,13 @@ const cookieParser = require("cookie-parser");
 const sessions = require("express-session");
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
+const cors = require("cors")
 
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors())
 
 app.use(
   sessions({

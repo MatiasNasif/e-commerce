@@ -22,23 +22,24 @@ import axios from 'axios';
 
 export default function Register() {
   // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM ASI FUNCIONA ESTE CODIGO
-  // const navigate = useNavigate();
-  // const name = useInput();
-  // const email = useInput();
-  // const password = useInput();
+  const navigate = useNavigate();
+  const name = useInput();
+  const email = useInput();
+  const password = useInput();
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //   .post("/api/register", {
-  //     name: name.value,
-  //     email: email.value,
-  //     password: password.value,
-  //   })
-  //   .then(() => navigate("/login"))
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+    .post("http://localhost:3001/api/users/register", {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    })
+    .then(res => console.log(res))
+    .then(() => navigate("/login"))
+  }
 
   return (
     <Flex
@@ -55,7 +56,7 @@ export default function Register() {
             to enjoy all of our cool features ✌️
           </Text>
         </Stack>
-        {/* <form onSubmit={handleSubmit}> */}
+        <form onSubmit={handleSubmit}>
         <Box
           rounded={'lg'}
           bg={useColorModeValue('white', 'gray.700')}
@@ -67,7 +68,9 @@ export default function Register() {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input {...name} type="text" />
+                  <Input 
+                  {...name} 
+                  type="text" />
                 </FormControl>
               </Box>
               <Box>
@@ -79,12 +82,16 @@ export default function Register() {
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input {...email} type="email" />
+              <Input 
+              {...email} 
+              type="email" />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input {...password} type={showPassword ? 'text' : 'password'} />
+                <Input 
+                {...password} 
+                type={showPassword ? 'text' : 'password'} />
                 <InputRightElement h={'full'}>
                   <Button
                     variant={'ghost'}
@@ -98,6 +105,7 @@ export default function Register() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+                type='submit'
                 loadingText="Submitting"
                 size="lg"
                 bg={'blue.400'}
@@ -115,7 +123,7 @@ export default function Register() {
             </Stack>
           </Stack>
         </Box>
-        {/* </form> */}
+        </form>
       </Stack>
     </Flex>
   );
