@@ -23,7 +23,7 @@ import { useDispatch } from 'react-redux'
 import { userRegister } from '../store/user';
 
 export default function Register() {
-  // VERIFICAR COMO HACER QUE CHAKRA TOME EL ONSUBMIT PARA EL FORM ASI FUNCIONA ESTE CODIGO
+
   const navigate = useNavigate();
   const name = useInput();
   const email = useInput();
@@ -49,14 +49,11 @@ export default function Register() {
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+      <Stack spacing={6} mx={'auto'} maxW={'xl'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
-            Sign up
+            Register
           </Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
-          </Text>
         </Stack>
         <form onSubmit={handleSubmit}>
           <Box
@@ -73,12 +70,6 @@ export default function Register() {
                     <Input
                       {...name}
                       type="text" />
-                  </FormControl>
-                </Box>
-                <Box>
-                  <FormControl id="lastName">
-                    <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
                   </FormControl>
                 </Box>
               </HStack>
@@ -115,7 +106,7 @@ export default function Register() {
                   _hover={{
                     bg: 'blue.500',
                   }}>
-                  Sign up
+                  Create Account
                 </Button>
               </Stack>
               <Stack pt={6}>

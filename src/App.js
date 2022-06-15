@@ -23,19 +23,15 @@ import ModifyProduct from "./components/SoloAdmin/ModifyProduct";
 import UsersAdmin from "./components/SoloAdmin/UsersAdmin";
 import CategoryProduct from "./components/SoloAdmin/CategoryProduct"
 
-import { useLocation } from 'react-router';
-import axios from "axios";
+import { useDispatch } from 'react-redux'
+import { userPersistence } from './store/user'
 
 function App() {
-
-/*   const { pathname } = useLocation();
-  const { setUser } = useContext(UserContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/users/me')
-      .then((user) => { setUser(user.data) })
-      .catch(error => console.log(error))
-  }, [pathname]) */
+    dispatch(userPersistence())
+  }, [])
 
   return (
     <div>

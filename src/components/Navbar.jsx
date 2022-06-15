@@ -1,26 +1,23 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link as ReactRouter } from "react-router-dom";
 import { useNavigate } from 'react-router'
-import { UserContext } from '../utils/UserContext';
 import { FaShoppingCart } from "react-icons/fa";
 import { chakra, Box, Flex, Image, Text, IconButton, Button, Stack, Icon, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Link, Input, useDisclosure, Center } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import axios from 'axios';
 import logo from "../assets/logo.jpg";
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { userLogout } from '../store/user';
+
 
 export default function WithSubnavigation() {
 
   const user = useSelector(state => state.user)
-  
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  // const { user, setUser } = useContext(UserContext)
 
   const handleLogout = () => {
-    /*     axios
-          .post('http://localhost:3001/api/users/logout')
-          .then(() => setUser({}))
-        navigate('/') */
+    dispatch(userLogout())
+    .then(() => navigate("/"))
   }
 
   const { isOpen, onToggle } = useDisclosure();
