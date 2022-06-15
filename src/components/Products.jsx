@@ -2,8 +2,6 @@ import { Flex, Grid } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
-//import products from "../utils/fake_api.json"
-
 
 const Products = () => {
 
@@ -24,12 +22,9 @@ const Products = () => {
         ))}
       </Grid>
     </Flex>
-
-
   )
-
-
 }
+
 export default Products;
 
 
