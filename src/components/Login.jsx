@@ -3,7 +3,6 @@ import axios from "axios";
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
-import { UserContext } from '../utils/UserContext';
 
 export default function Login() {
 
@@ -11,13 +10,10 @@ export default function Login() {
   const email = useInput();
   const password = useInput();
 
-  const { setUser } = useContext(UserContext)
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:3001/api/users/login", { email: email.value, password: password.value })
-      .then(data => setUser(data))
       .then(() => navigate('/'))
       .catch(error => console.log(error))
   }

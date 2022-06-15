@@ -22,11 +22,21 @@ import { MdLocalShipping } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart } from '../store/cart'
 
 export default function ItemProduct() {
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
+
+  const dispatch = useDispatch();
+  const cart = useSelector((state)=>state.cart)
+
+  const addToCartHandler = () => {
+    dispatch(addCart())
+    console.log(cart)
+  }
 
   useEffect(() => {
     axios
@@ -149,6 +159,7 @@ export default function ItemProduct() {
           </Stack>
 
           <Button
+            onClick={addToCartHandler}
             rounded={"none"}
             w={"full"}
             mt={8}
