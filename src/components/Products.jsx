@@ -12,7 +12,6 @@ const Products = () => {
     .then((res) => setProduct(res.data))
     .catch(error => console.log(error))
   }, [])
-
   return (
     <Flex width="100%" align="center" justify="center" >
       <Grid p="3" w="100%"

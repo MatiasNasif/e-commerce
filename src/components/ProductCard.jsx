@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, Link as ReactRouter } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
               <Link to={"/products/" + product.id} as={ReactRouter}>
