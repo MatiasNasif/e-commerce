@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
-import AboutUs from "./components/AboutUs";
 import Cart from "./components/Cart";
 import Categories from "./components/Categories";
 import CheckOut from "./components/CheckOut";
@@ -25,10 +24,10 @@ import UsersAdmin from "./components/SoloAdmin/UsersAdmin";
 import CategoryProduct from "./components/SoloAdmin/CategoryProduct"
 
 import { useLocation } from 'react-router';
-import { UserContext } from './utils/UserContext'
 import axios from "axios";
 
 function App() {
+
 /*   const { pathname } = useLocation();
   const { setUser } = useContext(UserContext);
 
