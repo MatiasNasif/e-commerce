@@ -96,7 +96,7 @@ export default function WithSubnavigation() {
                 bg: "#1A1A1A",
               }}
             >
-              Sing up
+              Sign up
             </Button>
           </Link>
 
@@ -164,6 +164,8 @@ const DesktopNav = () => {
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
+                as={ReactRouter}
+                to={`/${navItem.label.toLowerCase()}`}
                 p={2}
                 href={navItem.href ?? "#"}
                 fontSize={"3xl"}
@@ -333,7 +335,7 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Brands",
+    label: "Category",
   },
 ];
 
