@@ -313,7 +313,6 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 //   children?: Array<NavItem>;
 //   href?: string;
 // }
-
 const NAV_ITEMS = [
   {
     label: "Products",

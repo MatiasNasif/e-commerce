@@ -3,11 +3,10 @@ const router = express.Router();
 
 const { Product } = require("../models");
 
-router.get("/", (req, res) => { // funciona
-  console.log("ESTOY ACA")
+router.get("/", (req, res) => { 
   Product.findAll()
     .then((data) => res.status(200).send(data))
-    .catch(() => res.sendStatus(500));
+    .catch((e) => console.log(e));
 });
 
 router.get('/:id', (req, res) => {
@@ -16,7 +15,7 @@ router.get('/:id', (req, res) => {
   .catch(error => console.log(error));
 });
 
-router.post("/add", (req, res) => { // funciona
+router.post("/add", (req, res) => { 
   Product.findOrCreate({
     where: { ...req.body },
   })
