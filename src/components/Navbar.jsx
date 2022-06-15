@@ -3,7 +3,7 @@ import { Link as ReactRouter } from "react-router-dom";
 import { useNavigate } from 'react-router'
 import { UserContext } from '../utils/UserContext';
 import { FaShoppingCart } from "react-icons/fa";
-import { Box, Flex, Image, Text, IconButton, Button, Stack, Icon, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Link, Input, useDisclosure, Center } from "@chakra-ui/react";
+import { chakra, Box, Flex, Image, Text, IconButton, Button, Stack, Icon, Popover, PopoverTrigger, PopoverContent, useColorModeValue, Link, Input, useDisclosure, Center } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import axios from 'axios';
 import logo from "../assets/logo.jpg";
@@ -12,21 +12,21 @@ export default function WithSubnavigation() {
 
   const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext)
-   
+
   const handleLogout = () => {
     axios
       .post('http://localhost:3001/api/users/logout')
       .then(() => setUser({}))
     navigate('/')
   }
-console.log(user);
+  console.log(user);
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box>
-      <Flex bg={useColorModeValue("#1A1A1A", "gray.800")} color={useColorModeValue("gray.600", "white")}  minH={"60px"} py={{ base: 2 }} px={{ base: 4 }} borderBottom={1} borderStyle="solid" borderColor={useColorModeValue("gray.200", "gray.900")} align="center"  >
+      <Flex bg={useColorModeValue("#1A1A1A", "gray.800")} color={useColorModeValue("gray.600", "white")} minH={"60px"} py={{ base: 2 }} px={{ base: 4 }} borderBottom={1} borderStyle="solid" borderColor={useColorModeValue("gray.200", "gray.900")} align="center"  >
         <Flex flex={{ base: 1, md: "auto" }} ml={{ base: -2 }} display={{ base: "flex", md: "none" }} >
-          <IconButton onClick={onToggle} icon={ isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} /> } variant={"ghost"} aria-label={"Toggle Navigation"} />
+          <IconButton onClick={onToggle} icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />} variant={"ghost"} aria-label={"Toggle Navigation"} />
 
           {/* LOGO */}
         </Flex>
@@ -48,22 +48,22 @@ console.log(user);
 
         {/* BOTONES */}
 
-        {user.id ? ( 
-        <Stack
-          flex={{ base: 1, md: 0 }} justify={"flex-end"} direction={"row"} spacing={6}>
-          {/* BOTON LOGOUT  */}
-          <Link as={ReactRouter} to="/">
-            <Button onClick={handleLogout} m={5} mr={0} display={{ base: "none", md: "inline-flex" }} fontSize={"sm"} fontWeight={600} color={"#D4B742"} bg={"#1A1A1A"} _hover={{ bg: "#1A1A1A" }}>
-              LogOut
-            </Button>
-          </Link>
+        {user.id ? (
+          <Stack
+            flex={{ base: 1, md: 0 }} justify={"flex-end"} direction={"row"} spacing={6}>
+            {/* BOTON LOGOUT  */}
+            <Link as={ReactRouter} to="/">
+              <Button onClick={handleLogout} m={5} mr={0} display={{ base: "none", md: "inline-flex" }} fontSize={"sm"} fontWeight={600} color={"#D4B742"} bg={"#1A1A1A"} _hover={{ bg: "#1A1A1A" }}>
+                LogOut
+              </Button>
+            </Link>
             {/* SALUDO  */}
-          <Center w='150px' py='25px' >
-            <Text fontSize='md' color='white' >Hi, {user.name}!</Text>
-          </Center>
+            <Center w='150px' py='25px' >
+              <Text fontSize='md' color='white' >Hi, {user.name}!</Text>
+            </Center>
 
-        </Stack>
-         ) : (
+          </Stack>
+        ) : (
 
           <Stack flex={{ base: 1, md: 0 }} justify={"flex-end"} direction={"row"} spacing={6}>
             {/* BOTON REGISTER  */}
@@ -73,14 +73,14 @@ console.log(user);
               </Button>
             </Link>
 
-        {/* BOTON LOGIN  */}
-        <Link as={ReactRouter} to="/login">
+            {/* BOTON LOGIN  */}
+            <Link as={ReactRouter} to="/login">
               <Button display={{ base: "none", md: "inline-flex" }} m={5} mr={4} fontSize={"sm"} fontWeight={600} color={"black"} bg={"#D4B742"} hover={{ bg: "#D4B742" }}>
                 Log In
               </Button>
             </Link>
           </Stack>
-        )} 
+        )}
 
         <Stack>
 
@@ -88,7 +88,28 @@ console.log(user);
           <Link as={ReactRouter} to="/cart">
             <Button
               display={{ base: "none", md: "inline-flex" }} marginLeft='10px' fontSize={"sm"} fontWeight={600} variant="outline" color={"white"} _hover={{ bg: "#D4B742" }}>
+              
               <FaShoppingCart />
+                {/* CONDICIONAL PARA QUE SI NO HAY PRODUCTOS QUE NO LO MUESTRE */}
+               <chakra.span
+                pos="absolute"
+                top="-1px"
+                right="-1px"
+                px={2}
+                py={1}
+                fontSize="xs"
+                fontWeight="bold"
+                lineHeight="none"
+                color="red.100"
+                transform="translate(50%,-50%)"
+                bg="red.600"
+                rounded="full"
+              >
+                2
+              {/* NUMERO A CAMBIAR */}
+               
+              </chakra.span>
+
             </Button>
           </Link>
 
