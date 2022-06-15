@@ -1,8 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-
-class Product extends Model {}
+class Product extends Model { }
 
 Product.init(
     {
@@ -10,13 +9,15 @@ Product.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        description: {
-            type: DataTypes.TEXT, 
+        brand: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        SKU: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+        cat_uno: {
+            type: DataTypes.STRING,
+        },
+        cat_dos: {
+            type: DataTypes.STRING,
         },
         stock: {
             type: DataTypes.INTEGER,
@@ -26,15 +27,22 @@ Product.init(
             type: DataTypes.FLOAT,
             allowNull: false
         },
+        img_uno: {
+            type: DataTypes.STRING,
+        },
+        img_dos: {
+            type: DataTypes.STRING,
+        },
+        img_tres: {
+            type: DataTypes.STRING,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         avgscore: {
             type: DataTypes.FLOAT,
         },
-        img: {
-            type: DataTypes.ARRAY(DataTypes.TEXT),
-        },
-        category: {
-            type: DataTypes.STRING,
-        }
     },
     { sequelize, modelName: "product" }
 );
