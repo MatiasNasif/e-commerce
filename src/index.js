@@ -2,15 +2,16 @@ import { ChakraProvider } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom'
-import UserContextProvider from "./utils/UserContext";
 import App from "./App";
+import { Provider } from 'react-redux'
+import store from './store/store'
 
 ReactDOM.render(
   <ChakraProvider>
     <BrowserRouter>
-      <UserContextProvider>
+      <Provider store={store}>
         <App />
-      </UserContextProvider>
+      </Provider>
     </BrowserRouter>
   </ChakraProvider>,
   document.getElementById('root')
