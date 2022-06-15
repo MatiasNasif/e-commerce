@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -24,10 +24,10 @@ import UsersAdmin from "./components/SoloAdmin/UsersAdmin";
 import CategoryProduct from "./components/SoloAdmin/CategoryProduct"
 
 import { useLocation } from 'react-router';
-import { UserContext } from './utils/UserContext'
 import axios from "axios";
 
 function App() {
+
 /*   const { pathname } = useLocation();
   const { setUser } = useContext(UserContext);
 
