@@ -1,7 +1,8 @@
 import { Box, Flex, chakra, Link, Image } from "@chakra-ui/react";
-import { Link as ReactRouter } from 'react-router-dom'
+import { Link as ReactRouter } from 'react-router-dom';
 
 function Cart() {
+
   return (
     <div>
       <Flex
