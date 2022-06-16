@@ -3,13 +3,24 @@ import ItemCart from "./ItemCart"
 
 //solo a modo de prueba
 import data from "../utils/fake_api.json"
+import { Link as ReactRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { killCart } from '../store/cart';
+
+
+  
 
 
 const Cart = () => {
-
+  const dispatch = useDispatch();
   const dataColor = useColorModeValue("white", "gray.800");
   const bg = useColorModeValue("white", "gray.800");
   const bg2 = useColorModeValue("gray.100", "gray.700");
+
+  const killHandler = () => {
+    dispatch(killCart())
+  }
+
   return (
     <Flex
       w="full"
@@ -73,7 +84,23 @@ const Cart = () => {
           <Button colorScheme='whatsapp'>Purchase on Whatsapp</Button>
           </Link>
         </WrapItem>
-
+        <Button
+            onClick={killHandler}
+            rounded={"none"}
+            w={"full"}
+            mt={8}
+            size={"lg"}
+            py={"7"}
+            bg={useColorModeValue("gray.900", "gray.50")}
+            color={useColorModeValue("white", "gray.900")}
+            textTransform={"uppercase"}
+            _hover={{
+              transform: "translateY(2px)",
+              boxShadow: "lg",
+            }}
+          >
+            remove cart
+          </Button>
 
       </Stack>
     </Flex>

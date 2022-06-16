@@ -6,13 +6,26 @@ import { chakra, Box, Flex, Image, Text, Button, Stack, Popover, PopoverTrigger,
 import logo from "../assets/logo.jpg";
 import { useDispatch } from 'react-redux'
 import { userLogout } from '../store/user';
+import { addCart } from '../store/cart';
+
 
 export default function WithSubnavigation() {
 
-  const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : { };
+  //console.log('CART ID ES', cart.id)
+  
 
+  const cart = localStorage.getItem('cart')
+               ? JSON.parse(localStorage.getItem('cart'))
+               : {}
+  //const cart = useSelector((state) => state.cart)
+  const user = localStorage.getItem('user')
+               ? JSON.parse(localStorage.getItem('user'))
+               : {}
+  //const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  if (!cart.id) dispatch(addCart())
 
   const handleLogout = () => {
     dispatch(userLogout())

@@ -12,10 +12,6 @@ import Register from "./components/Register";
 import Login from "./components/Login"
 import Search from "./components/Search";
 
-import { useDispatch } from 'react-redux'
-import { userPersistence } from './store/user'
-
-
 function App() {
 
   return (
