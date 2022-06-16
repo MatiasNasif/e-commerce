@@ -39,9 +39,14 @@ export default function WithSubnavigation() {
         </Flex>
 
         {/* BUSCADOR */}
-        <Stack spacing={3} paddingRight="5">
+        {/* <Stack spacing={3} paddingRight="5">
           <Input placeholder="Search" size="sm" />
-        </Stack>
+        </Stack> */}
+        <Link as={ReactRouter} to="/search">
+              <Button display={{ base: "none", md: "inline-flex" }} m={5} mr={4} fontSize={"sm"} fontWeight={600} color={"black"} bg={"#D4B742"} hover={{ bg: "#D4B742" }}>
+                Search
+              </Button>
+            </Link>
 
         {/* BOTONES */}
 
