@@ -1,7 +1,46 @@
+const { Op } = require("sequelize");
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-class Product extends Model { }
+class Product extends Model {
+    static getAllWhereName(name) {
+        return Product.findAll({
+            where: {
+                name: {
+                    [Op.iLike]: `%${name}%`
+                }
+            }
+        })
+    }
+
+    // static getAllWhereCategory(category) {
+    //     return Product.findAll({
+    //         where: {
+    //             cat_uno: {
+    //                 [Op.iLike]: `%${category}%`
+    //             }
+    //         }
+    //     })
+    // }
+
+    static getAllWhereCategory(category) {
+        return Product.findAll({
+            where: {
+                [Op.or]: [{ cat_uno:{[Op.iLike]: `%${category}%`} }, { cat_dos:{[Op.iLike]: `%${category}%`} }]
+            }
+        })
+    }
+
+    static getAllWhereDescription(description) {
+        return Product.findAll({
+            where: {
+                description: {
+                    [Op.iLike]: `%${description}%`
+                }
+            }
+        })
+    }
+}
 
 Product.init(
     {

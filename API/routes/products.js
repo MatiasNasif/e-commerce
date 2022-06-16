@@ -57,4 +57,24 @@ router.delete("/:id", function (req, res) {
     });
 });
 
+router.get("/search/:type/:input", (req, res) => {
+  if(req.params.type === "name") {
+    Product.getAllWhereName(req.params.input)
+    .then(data => res.status(200).send(data))
+    .catch((e) => console.log("no se encontro nombre, error: ", e));
+  }
+  
+  if(req.params.type === "description") {
+    Product.getAllWhereDescription(req.params.input)
+    .then(data => res.status(200).send(data))
+    .catch((e) => console.log("no se encontro descripcion, error: ", e))
+  }
+
+  if(req.params.type === "category") {
+    Product.getAllWhereCategory(req.params.input)
+    .then(data => res.status(200).send(data))
+    .catch((e) => console.log("no se encontro categoria, error: ", e))
+  }
+})
+
 module.exports = router;
