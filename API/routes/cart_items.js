@@ -4,6 +4,7 @@ const { Cart_item } = require('../models');
 const cart_items = express.Router(); // chequear si queda nombre users o router
 
 cart_items.post('/:cart_id/:product_id/add', (req, res) => {
+    console.log ('ESTOY ACA')
     Cart_item.create({ 
         cartId: req.params.cart_id,
         productId: req.params.product_id

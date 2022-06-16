@@ -23,15 +23,15 @@ import ModifyProduct from "./components/SoloAdmin/ModifyProduct";
 import UsersAdmin from "./components/SoloAdmin/UsersAdmin";
 import CategoryProduct from "./components/SoloAdmin/CategoryProduct"
 
-import { useDispatch } from 'react-redux'
-import { userPersistence } from './store/user'
+//import { useDispatch } from 'react-redux'
+//import { userPersistence } from './store/user'
 
 function App() {
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(userPersistence())
-  }, [])
+  }, []) */
 
   return (
     <div>

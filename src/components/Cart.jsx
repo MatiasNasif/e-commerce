@@ -1,7 +1,15 @@
-import { Box, Flex, chakra, Link, Image } from "@chakra-ui/react";
+import { Box, Flex, chakra, Link, Image, Button, useColorModeValue } from "@chakra-ui/react";
 import { Link as ReactRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { killCart } from '../store/cart';
+
 
 function Cart() {
+  const dispatch = useDispatch();
+
+  const killHandler = () => {
+    dispatch(killCart())
+  }
 
   return (
     <div>
@@ -126,6 +134,23 @@ function Cart() {
           </Flex>
         </Box>
       </Flex>;
+      <Button
+            onClick={killHandler}
+            rounded={"none"}
+            w={"full"}
+            mt={8}
+            size={"lg"}
+            py={"7"}
+            bg={useColorModeValue("gray.900", "gray.50")}
+            color={useColorModeValue("white", "gray.900")}
+            textTransform={"uppercase"}
+            _hover={{
+              transform: "translateY(2px)",
+              boxShadow: "lg",
+            }}
+          >
+            remove cart
+          </Button>
     </div>
   );
 }

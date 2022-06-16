@@ -7,17 +7,34 @@ import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import logo from "../assets/logo.jpg";
 import { useSelector, useDispatch } from 'react-redux'
 import { userLogout } from '../store/user';
+import { addCart } from '../store/cart';
+
 
 
 export default function WithSubnavigation() {
 
-  const user = useSelector(state => state.user)
+  //console.log('CART ID ES', cart.id)
+  
+
+  const cart = localStorage.getItem('cart')
+               ? JSON.parse(localStorage.getItem('cart'))
+               : {}
+  //const cart = useSelector((state) => state.cart)
+  const user = localStorage.getItem('user')
+               ? JSON.parse(localStorage.getItem('user'))
+               : {}
+  //const user = useSelector(state => state.user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  if (!cart.id) dispatch(addCart())
+
   const handleLogout = () => {
     dispatch(userLogout())
-    .then(() => navigate("/"))
+    .then(() => {
+      localStorage.removeItem('user')
+      return navigate("/")
+    })
   }
 
   const { isOpen, onToggle } = useDisclosure();

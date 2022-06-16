@@ -8,7 +8,10 @@ export const userRegister = createAsyncThunk("USER_REGISTER", (data) => {
 
 export const userLogin = createAsyncThunk("USER_LOGIN", (data) => {
     return axios.post("http://localhost:3001/api/users/login", data)
-        .then(user => user.data)
+        .then(user => {
+            localStorage.setItem('user', JSON.stringify(user.data))
+            return user.data
+        })
 })
 
 export const userLogout = createAsyncThunk("USER_LOGOUT", () => {
@@ -16,17 +19,17 @@ export const userLogout = createAsyncThunk("USER_LOGOUT", () => {
         .then(user => {})
 })
 
-export const userPersistence = createAsyncThunk("USER_PERSISTENCE", () => {
+/* export const userPersistence = createAsyncThunk("USER_PERSISTENCE", () => {
     return axios.post("http://localhost:3001/api/users/me")
         .then(user => user.data)
-})
+}) */
 
 
 const userReducer = createReducer({}, {
     [userRegister.fulfilled]: (state, action) => action.payload,
     [userLogin.fulfilled]: (state, action) => action.payload,
     [userLogout.fulfilled]: (state, action) => action.payload,
-    [userPersistence.fulfilled]: (state, action) => action.payload,
+    //[userPersistence.fulfilled]: (state, action) => action.payload,
     
 })
 

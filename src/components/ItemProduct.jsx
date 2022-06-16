@@ -23,20 +23,40 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart } from '../store/cart'
+import { cartToUser, addItem } from '../store/cart';
 
 export default function ItemProduct() {
   const { id } = useParams();
 
   const [product, setProduct] = useState([]);
-
+  console.log('ID PARAMS', typeof id)
   const dispatch = useDispatch();
-  const cart = useSelector((state)=>state.cart)
+  const cart = localStorage.getItem('cart')
+               ? JSON.parse(localStorage.getItem('cart'))
+               : {}
+  /* const cart = useSelector((state) => {
+    console.log('ESTADO DE CART ES:', state.cart)
+    return state.cart}) */
+  const user = localStorage.getItem('user')
+               ? JSON.parse(localStorage.getItem('user'))
+               : {}
+  //const user = useSelector((state) => state.user)
+
+  console.log('el ID de cart es', cart.id)
 
   const addToCartHandler = () => {
-    dispatch(addCart())
-    console.log(cart)
+    
+      dispatch(addItem({cartId: cart.id, productId: id}))
+    console.log('el ID de cart es', cart.id)
+    console.log('el sessionID de cart es', cart.sessionId);
+      if (user.id) dispatch(cartToUser({cartId: cart.id, userId: user.id})) // corregir esto para pegarle el id de usuario
+    
+    /* else {dispatch(addItem({cartId: cart.id, productId: id}))}
+    console.log('el ID de cart es', cart.id) */
+    
   }
+
+  console.log('el ID de cart es', cart.id)
 
   useEffect(() => {
     axios
