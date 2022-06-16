@@ -1,28 +1,12 @@
-import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  HStack,
-  InputRightElement,
-  Stack,
-  Button,
-  Heading,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
-
+import { Flex, Box, FormControl, FormLabel, Input, InputGroup, InputRightElement, Stack, Button, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
-import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { userRegister } from '../store/user';
 
-export default function Register() {
+const Register = () => {
 
   const navigate = useNavigate();
   const name = useInput();
@@ -44,68 +28,37 @@ export default function Register() {
   }
 
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Stack spacing={6} mx={'auto'} maxW={'xl'} py={12} px={6}>
+    <Flex minH={'50vh'}align={'center'} justify={'center'} bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={6} mx={'auto'} maxW={'xl'} py={12} px={10}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
             Register
           </Heading>
         </Stack>
         <form onSubmit={handleSubmit}>
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}
-          >
+          <Box rounded={'lg'}bg={useColorModeValue('white', 'gray.700')}boxShadow={'lg'}p={8}>
             <Stack spacing={4}>
-              <HStack>
-                <Box>
-                  <FormControl id="firstName" isRequired>
-                    <FormLabel>First Name</FormLabel>
-                    <Input
-                      {...name}
-                      type="text" />
-                  </FormControl>
-                </Box>
-              </HStack>
+              <FormControl id="firstName" isRequired>
+                <FormLabel>First Name</FormLabel>
+                <Input {...name}type="text" />
+              </FormControl>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input
-                  {...email}
-                  type="email" />
+                <Input {...email}type="email" />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input
-                    {...password}
-                    type={showPassword ? 'text' : 'password'} />
+                  <Input {...password} type={showPassword ? 'text' : 'password'} />
                   <InputRightElement h={'full'}>
-                    <Button
-                      variant={'ghost'}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }>
+                    <Button variant={'ghost'} onClick={() =>setShowPassword((showPassword) => !showPassword)}>
                       {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
               <Stack spacing={10} pt={2}>
-                <Button
-                  type='submit'
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}>
+                <Button type='submit' loadingText="Submitting" size="lg" bg={'blue.400'} color={'white'}_hover={{bg: 'blue.500', }}>
                   Create Account
                 </Button>
               </Stack>
@@ -121,3 +74,5 @@ export default function Register() {
     </Flex>
   );
 }
+
+export default Register;

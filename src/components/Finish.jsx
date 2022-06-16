@@ -1,4 +1,4 @@
-function Finish() {
+const Finish = () => {
   return (
     <div>
       Finish

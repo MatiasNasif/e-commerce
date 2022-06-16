@@ -1,14 +1,14 @@
-import { Box, Image, Button } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import { Box, Image } from '@chakra-ui/react';
+import React from 'react';
 import { Link, Link as ReactRouter } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
 
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-              <Link to={"/products/" + product.id} as={ReactRouter}>
-                 <Image src={product.img_uno} />
-              </Link>
+            <Link to={"/products/" + product.id} as={ReactRouter}>
+                <Image src={product.img_uno} />
+            </Link>
             <Box p='6'>
                 <Box
                     mt='1'
@@ -19,9 +19,8 @@ const ProductCard = ({ product }) => {
                 >
                     {product.name}
                 </Box>
-
                 <Box>
-                    $ {product.price.toFixed(2) }
+                    $ {product.price.toFixed(2)}
                 </Box>
             </Box>
         </Box>
