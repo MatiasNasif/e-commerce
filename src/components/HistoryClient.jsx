@@ -1,4 +1,4 @@
-function HistoryClient() {
+const HistoryClient =() => {
   return (
     <div>
       History Client

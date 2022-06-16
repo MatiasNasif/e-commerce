@@ -1,133 +1,83 @@
-import { Box, Flex, chakra, Link, Image } from "@chakra-ui/react";
-import { Link as ReactRouter } from 'react-router-dom';
+import { Flex, Stack, SimpleGrid, useColorModeValue, chakra, WrapItem, Button, Link } from "@chakra-ui/react";
+import ItemCart from "./ItemCart"
 
-function Cart() {
+//solo a modo de prueba
+import data from "../utils/fake_api.json"
 
+const Cart = () => {
+
+  const dataColor = useColorModeValue("white", "gray.800");
+  const bg = useColorModeValue("white", "gray.800");
+  const bg2 = useColorModeValue("gray.100", "gray.700");
   return (
-    <div>
-      <Flex
-        bg="#edf3f8"
-        _dark={{
-          bg: "#3e3e3e",
+    <Flex
+      w="full"
+      bg="#edf3f8"
+      _dark={{
+        bg: "#3e3e3e",
+      }}
+      p={10}
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Stack
+        direction={{
+          base: "column",
         }}
-        p={50}
         w="full"
-        alignItems="center"
-        justifyContent="center"
+        bg={{
+          md: bg,
+        }}
+        shadow="lg"
       >
-        <Box
-          mx="auto"
-          px={8}
-          py={4}
-          rounded="lg"
-          shadow="lg"
-          bg="white"
-          _dark={{
-            bg: "gray.800",
+        <Flex
+          direction={{
+            base: "row",
+            md: "column",
           }}
-          maxW="2xl"
+          bg={dataColor}
+
         >
-          <Flex justifyContent="space-between" alignItems="center">
-            <chakra.span
-              fontSize="sm"
-              color="gray.600"
-              _dark={{
-                color: "gray.400",
-              }}
-            >
-              Mar 10, 2019
-            </chakra.span>
-            <Link
-              px={3}
-              py={1}
-              bg="gray.600"
-              color="gray.100"
-              fontSize="sm"
-              fontWeight="700"
-              rounded="md"
-              _hover={{
-                bg: "gray.500",
-              }}
-            >
-              Design
-            </Link>
-          </Flex>
+          <SimpleGrid
+            textTransform="uppercase"
+            bg={bg2}
+            color={"gray.500"}
+            fontSize="md"
+            fontWeight="hairline"
+            spacingY={4}
+            columns={{
+              base: 1,
+              md: 4,
+            }}
+            w="full"
+            py={2}
+            px={150}
+          >
+            <span>Products</span>
 
-          <Box mt={2}>
-            <Link
-              fontSize="2xl"
-              color="gray.700"
-              _dark={{
-                color: "white",
-              }}
-              fontWeight="700"
-              _hover={{
-                color: "gray.600",
-                _dark: {
-                  color: "gray.200",
-                },
-                textDecor: "underline",
-              }}
-            >
-              Accessibility tools for designers and developers
-            </Link>
-            <chakra.p
-              mt={2}
-              color="gray.600"
-              _dark={{
-                color: "gray.300",
-              }}
-            >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
-              expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos
-              enim reprehenderit nisi, accusamus delectus nihil quis facere in modi
-              ratione libero!
-            </chakra.p>
-          </Box>
+          </SimpleGrid>
+        </Flex>
 
-          <Flex justifyContent="space-between" alignItems="center" mt={4}>
-            <Link
-              color="brand.600"
-              _dark={{
-                color: "brand.400",
-              }}
-              _hover={{
-                textDecor: "underline",
-              }}
-            >
-              Read more
-            </Link>
+        {data.map((product) => {
+          return (
+            <ItemCart key={product.id} product={product} />
+          );
+        })}
+        <chakra.span>
+          TOTAL: $ 6.179.32
+        </chakra.span>
 
-            <Flex alignItems="center">
-              <Image
-                mx={4}
-                w={10}
-                h={10}
-                rounded="full"
-                fit="cover"
-                display={{
-                  base: "none",
-                  sm: "block",
-                }}
-                src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80"
-                alt="avatar"
-              />
-              <Link
-                color="gray.700"
-                _dark={{
-                  color: "gray.200",
-                }}
-                fontWeight="700"
-                cursor="pointer"
-              >
-                Khatab wedaa
-              </Link>
-            </Flex>
-          </Flex>
-        </Box>
-      </Flex>;
-    </div>
+        <WrapItem justify={{ md: "end", }}>
+        <Link href='https://www.plataforma5.la/ar/online' isExternal>
+          <Button colorScheme='whatsapp'>Purchase on Whatsapp</Button>
+          </Link>
+        </WrapItem>
+
+
+      </Stack>
+    </Flex>
   );
+
 }
 
 export default Cart;

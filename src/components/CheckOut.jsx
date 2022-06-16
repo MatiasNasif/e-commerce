@@ -1,4 +1,4 @@
-function CheckOut() {
+const CheckOut = () => {
   return (
     <div>
       CheckOut
