@@ -1,48 +1,35 @@
 import { Box, Container, Stack, Text, Image, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, useColorModeValue, List, ListItem, } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { cartToUser, addItem } from '../store/cart';
 
 const ItemProduct = () => {
   const { id } = useParams();
-
-  const [product, setProduct] = useState([]);
-  console.log('ID PARAMS', typeof id)
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const cart = localStorage.getItem('cart')
-               ? JSON.parse(localStorage.getItem('cart'))
-               : {}
-  /* const cart = useSelector((state) => {
-    console.log('ESTADO DE CART ES:', state.cart)
-    return state.cart}) */
-  const user = localStorage.getItem('user')
-               ? JSON.parse(localStorage.getItem('user'))
-               : {}
-  //const user = useSelector((state) => state.user)
+  const [product, setProduct] = useState([]);
 
-  console.log('el ID de cart es', cart.id)
+  const cart = localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : {}
+
+  const user = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : {}
 
   const addToCartHandler = () => {
-    
-      dispatch(addItem({cartId: cart.id, productId: id}))
-    console.log('el ID de cart es', cart.id)
-    console.log('el sessionID de cart es', cart.sessionId);
-      if (user.id) dispatch(cartToUser({cartId: cart.id, userId: user.id})) // corregir esto para pegarle el id de usuario
-    
-    /* else {dispatch(addItem({cartId: cart.id, productId: id}))}
-    console.log('el ID de cart es', cart.id) */
-    
+
+    dispatch(addItem({ cartId: cart.id, productId: id }))
+    if (user.id) dispatch(cartToUser({ cartId: cart.id, userId: user.id }))
+    navigate('/cart')
   }
-
-  console.log('el ID de cart es', cart.id)
-
+  
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/products/" + id)
+      .get(`http://localhost:3001/api/products/${id}`)
       .then((res) => setProduct(res.data))
       .catch((error) => console.log(error));
   }, []);

@@ -8,8 +8,6 @@ import AddCategory from "./AddCategory";
 
 const CategoryProduct = () => {
   const [category, setCategory] = useState([]); // front
-  console.log("hola");
-
   useEffect(
     () => setCategory(fakeCategory),
     /* axios
@@ -19,7 +17,6 @@ const CategoryProduct = () => {
     []
   );
 
-  console.log(category);
   return (
     <>
       <Flex width="100%" align="center" justify="center">

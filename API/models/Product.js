@@ -1,7 +1,6 @@
 const { Op } = require("sequelize");
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
-
 class Product extends Model {
     static getAllWhereName(name) {
         return Product.findAll({
@@ -12,7 +11,7 @@ class Product extends Model {
             }
         })
     }
-
+    // Filtra por categoria 1
     // static getAllWhereCategory(category) {
     //     return Product.findAll({
     //         where: {

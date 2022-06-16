@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
-
 const Products = () => {
   const [products, setProduct] = useState([])
 

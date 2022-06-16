@@ -19,7 +19,7 @@ app.use(cors())
 
 app.use(
   sessions({
-    secret: "pelis",
+    secret: "goodvibes",
     resave: true,
     saveUninitialized: true,
   })
@@ -36,16 +36,16 @@ passport.use(
     function (email, password, done) {
       models.User.findOne({ where: { email } })
         .then((user) => {
-          if (!user) return done(null, false); // email not found
+          if (!user) return done(null, false);
           user.hash(password, user.salt).then((hash) => {
             if (hash !== user.password) {
-              return done(null, false); // wrong password
+              return done(null, false);
             }
 
-            return done(null, user); // success
+            return done(null, user);
           });
         })
-        .catch(done); // done(err)
+        .catch(done);
     }
   )
 );
@@ -62,8 +62,6 @@ passport.deserializeUser(function (id, done) {
 
 // Routes
 app.use("/api", routes);
-
-// agregar un error como middleware??
 
 db.sync({ force: false }).then(() => {
   app.listen(3001, () => {

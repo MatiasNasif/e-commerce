@@ -2,15 +2,13 @@ const express = require('express');
 const passport = require('passport');
 const { User } = require('../models');
 
-const users = express.Router(); // chequear si queda nombre users o router
+const users = express.Router();
 
 users.post('/register', (req, res) => {
     User.create(req.body)
     .then(user => res.status(201).send(user))
     .catch(error => console.log(error));
 });
-
-// CHEQUEAR SI ESTÁ OK EL MIDDLEWARE DE PASSPORT UNA VEZ QUE ESTÉ CONFIGURADO
 
 users.post('/login', passport.authenticate('local'), (req, res) => {
     res.send(req.user)
@@ -63,4 +61,4 @@ users.delete('/admin/:id', (req, res) => {
     .catch(err => console.log(err))
 });
 
-module.exports = users
+module.exports = users;

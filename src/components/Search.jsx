@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Input, Flex, Button, StackDivider, VStack, Box, Grid, FormControl, Text } from '@chakra-ui/react'
+import { Container, Input, Flex, Button, StackDivider, VStack, Grid, FormControl, Text } from '@chakra-ui/react'
 import useInput from '../hooks/useInput'
 import axios from 'axios';
 import ProductCard from './ProductCard';
@@ -17,7 +17,7 @@ const Search = () => {
         axios
         .get(`http://localhost:3001/api/products/search/${typeOfSearch}/${search.value}`)
         .then((res) => setProducts(res.data))
-        .catch(error => console.log(error)) // navigate 404??
+        .catch(error => console.log(error))
     }
 
     return (

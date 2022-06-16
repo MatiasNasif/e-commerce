@@ -1,27 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link as ReactRouter } from "react-router-dom";
 import { useNavigate } from 'react-router'
 import { FaShoppingCart } from "react-icons/fa";
-import { chakra, Box, Flex, Image, Text, Button, Stack, Popover, PopoverTrigger, useColorModeValue, Link, Input, Center } from "@chakra-ui/react";
+import { chakra, Box, Flex, Image, Text, IconButton, Button, Stack, Popover, PopoverTrigger, useColorModeValue, Link, useDisclosure, Center } from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import logo from "../assets/logo.jpg";
 import { useDispatch } from 'react-redux'
 import { userLogout } from '../store/user';
 import { addCart } from '../store/cart';
-
+import axios from 'axios';
 
 export default function WithSubnavigation() {
 
-  //console.log('CART ID ES', cart.id)
-  
-
   const cart = localStorage.getItem('cart')
-               ? JSON.parse(localStorage.getItem('cart'))
-               : {}
-  //const cart = useSelector((state) => state.cart)
+    ? JSON.parse(localStorage.getItem('cart'))
+    : {}
+
   const user = localStorage.getItem('user')
-               ? JSON.parse(localStorage.getItem('user'))
-               : {}
-  //const user = useSelector(state => state.user)
+    ? JSON.parse(localStorage.getItem('user'))
+    : {}
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -29,14 +27,25 @@ export default function WithSubnavigation() {
 
   const handleLogout = () => {
     dispatch(userLogout())
-      .then(() => {localStorage.removeItem("user")
-    return navigate("/")})
+      .then(() => {
+        localStorage.removeItem('user')
+        return navigate("/")
+      })
   }
+
+  const [products, setProducts] = useState([])
+
+  axios.get(`http://localhost:3001/api/carts/${cart.id}`)
+    .then(res => setProducts(res.data[0].products))
+
+
+  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box>
       <Flex bg={useColorModeValue("#1A1A1A", "gray.800")} color={useColorModeValue("gray.600", "white")} minH={"60px"} py={{ base: 2 }} px={{ base: 4 }} borderBottom={1} borderStyle="solid" borderColor={useColorModeValue("gray.200", "gray.900")} align="center"  >
         <Flex flex={{ base: 1, md: "auto" }} ml={{ base: -2 }} display={{ base: "flex", md: "none" }} >
+          <IconButton onClick={onToggle} icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />} variant={"ghost"} aria-label={"Toggle Navigation"} />
 
           {/* LOGO */}
         </Flex>
@@ -52,14 +61,11 @@ export default function WithSubnavigation() {
         </Flex>
 
         {/* BUSCADOR */}
-        {/* <Stack spacing={3} paddingRight="5">
-          <Input placeholder="Search" size="sm" />
-        </Stack> */}
         <Link as={ReactRouter} to="/search">
-              <Button display={{ base: "none", md: "inline-flex" }} m={5} mr={4} fontSize={"sm"} fontWeight={600} color={"black"} bg={"#D4B742"} hover={{ bg: "#D4B742" }}>
-                Search
-              </Button>
-            </Link>
+          <Button display={{ base: "none", md: "inline-flex" }} m={5} mr={4} fontSize={"sm"} fontWeight={600} color={"black"} bg={"#D4B742"} hover={{ bg: "#D4B742" }}>
+            Search
+          </Button>
+        </Link>
 
         {/* BOTONES */}
 
@@ -102,15 +108,28 @@ export default function WithSubnavigation() {
           <Link as={ReactRouter} to="/cart">
             <Button
               display={{ base: "none", md: "inline-flex" }} marginLeft='10px' fontSize={"sm"} fontWeight={600} variant="outline" color={"white"} _hover={{ bg: "#D4B742" }}>
-              <FaShoppingCart />
-              {/* CONDICIONAL PARA QUE SI NO HAY PRODUCTOS QUE NO LO MUESTRE */}
-              <chakra.span pos="absolute" top="-1px" right="-1px" px={2} py={1}  fontSize="xs" fontWeight="bold" lineHeight="none"  color="red.100"  transform="translate(50%,-50%)" bg="red.600" rounded="full" >
-                2
-                {/* NUMERO A CAMBIAR */}
 
+              <FaShoppingCart />
+              <chakra.span
+                pos="absolute"
+                top="-1px"
+                right="-1px"
+                px={2}
+                py={1}
+                fontSize="xs"
+                fontWeight="bold"
+                lineHeight="none"
+                color="red.100"
+                transform="translate(50%,-50%)"
+                bg="red.600"
+                rounded="full"
+              >
+                {products.length}
               </chakra.span>
+
             </Button>
           </Link>
+
         </Stack>
       </Flex>
     </Box>
@@ -122,7 +141,7 @@ const DesktopNav = () => {
   const linkColor = useColorModeValue("white", "gray.200");
   const linkHoverColor = useColorModeValue("lightgrey", "white");
 
-  // PRODUCTS
+  // PRODUCTS Y BRANDS
   return (
     <Stack direction={"row"} spacing={2}>
       <Box>

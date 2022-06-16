@@ -19,17 +19,10 @@ export const userLogout = createAsyncThunk("USER_LOGOUT", () => {
         .then(user => { })
 });
 
-/* export const userPersistence = createAsyncThunk("USER_PERSISTENCE", () => {
-    return axios.post("http://localhost:3001/api/users/me")
-        .then(user => user.data)
-}) */
-
 const userReducer = createReducer({}, {
     [userRegister.fulfilled]: (state, action) => action.payload,
     [userLogin.fulfilled]: (state, action) => action.payload,
     [userLogout.fulfilled]: (state, action) => action.payload,
-    //[userPersistence.fulfilled]: (state, action) => action.payload,
-
 });
 
 export default userReducer;

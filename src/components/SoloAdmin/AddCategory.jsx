@@ -8,9 +8,7 @@ const AddCategory = () => {
     event.preventDefault();
     setInput(event.target.value);
   };
-  //function onSubmit: pending
 
-  console.log(input);
   return (
     <div>
       <h1>Add a new Category</h1>

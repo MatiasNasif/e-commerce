@@ -10,13 +10,7 @@ const ProductCard = ({ product }) => {
                 <Image src={product.img_uno} />
             </Link>
             <Box p='6'>
-                <Box
-                    mt='1'
-                    fontWeight='semibold'
-                    as='h4'
-                    lineHeight='tight'
-                    noOfLines={1}
-                >
+                <Box mt='1' fontWeight='semibold' as='h4' lineHeight='tight' noOfLines={1} >
                     {product.name}
                 </Box>
                 <Box>

@@ -1,7 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-
 class Order_item extends Model {};
 
 Order_item.init(

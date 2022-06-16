@@ -9,7 +9,6 @@ const Cart_item = require("./Cart_item");
 User.hasMany(Order);
 Order.belongsTo(User);
 
-
 Payment.belongsTo(Order);
 Order.hasOne(Payment);
 

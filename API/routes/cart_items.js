@@ -1,10 +1,9 @@
 const express = require('express');
 const { Cart_item } = require('../models');
 
-const cart_items = express.Router(); // chequear si queda nombre users o router
+const cart_items = express.Router();
 
 cart_items.post('/:cart_id/:product_id/add', (req, res) => {
-    console.log ('ESTOY ACA')
     Cart_item.create({ 
         cartId: req.params.cart_id,
         productId: req.params.product_id
@@ -31,8 +30,8 @@ cart_items.put('/:product_id/:modify', (req, res, next) => {
     .catch(next)
 });
 
-cart_items.delete('/:id', (req, res) => {
-    Cart_item.destroy({ where: { id: req.params.id } })
+cart_items.delete('/:product_id', (req, res) => {
+    Cart_item.destroy({ where: { productId: req.params.product_id } })
     .then(() => res.sendStatus(202))
     .catch(err => console.log(err))
 });

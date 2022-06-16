@@ -4,14 +4,10 @@ const sequelize = require("../db");
 class Cart extends Model {}
 
 Cart.init(
-    {
+    {   // esto se crearia automaticamente al hacer la relacion con user
         // session_id: {
         //     type: DataTypes.INTEGER,
-        // },                           esto se crearia automaticamente al hacer la relacion con user
-        // quantity: {
-        //     type: DataTypes.INTEGER,
-        //     defaultValue: 1,
-        // }
+        // },
     },
     { sequelize, modelName: "cart" }
 )

@@ -1,7 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-
 class Review extends Model {}
 
 Review.init(
