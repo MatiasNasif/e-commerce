@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from '../store/cart'
+import Cart from "./Cart";
 
 export default function ItemProduct() {
   const { id } = useParams();
@@ -36,6 +37,8 @@ export default function ItemProduct() {
   const addToCartHandler = () => {
     dispatch(addCart())
     console.log(cart)
+    console.log("PRODUCT EN ITEM_PRODUCT", product)
+    {<Cart product={product}/>}
   }
 
   useEffect(() => {
